@@ -47,8 +47,16 @@ function filterConsumptionBycreditCardId(cardId){
 }
 
 function addNewConsumption(cardId, placeName, ammount, date){
-    if(date instanceof date())
+    if(!(date instanceof Date)){
+        console.log("La fecha no es válida")
+        return;
+    }
+    if(this.currentDate > creditCards.dueDate){
+        console.log("La tarjeta de crédito está vencida")
+        return;
+    }
+    consumptions.push(new Consumption(cardId, placeName, ammount, date))
+    creditCards.balance += ammount;
+    return true
     
-    consumptions.push(cardId, date, placeName)
 }
-console.log(new Date(2015, 3, 25) instanceof new Date())

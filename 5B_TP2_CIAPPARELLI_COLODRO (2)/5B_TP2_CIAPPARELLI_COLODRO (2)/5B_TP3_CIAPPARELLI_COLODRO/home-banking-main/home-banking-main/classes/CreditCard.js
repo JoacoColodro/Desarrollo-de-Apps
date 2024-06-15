@@ -32,7 +32,7 @@ const creditCards = [
     new CreditCard(clients[9].id, 'Visa', 0.9)
 ];
 
-console.log(creditCards)
+console.log("Tarjetas:", creditCards)
 
 function filterCreditCardById(cardId){
     let i = 0
@@ -46,11 +46,12 @@ function filterCreditCardById(cardId){
 }
 
 function filterCreditCardByClientId(clientId){
-    let creditcardv = []
+    let filteredCreditCard = []
     for(let i in creditCards){
         if(creditCards[i].clientId == clientId){
-            creditcardv.push(creditCards[i])
+        filteredCreditCard.push(creditCards[i])
         }
     }
-    return creditcardv
+    return filteredCreditCard
 }
+
