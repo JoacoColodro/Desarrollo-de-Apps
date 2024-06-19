@@ -148,5 +148,29 @@ function filterClientById(clientId){
     
     return clients[i]
 }
+function HasSufficentBudget(type, ammount){
+    if(type == PESOS_SAVINGS_ACCOUNT && ammount > 0){
+        if(ammount <= clients[i].balance)
+            return true;
+    }    
+    else if(type == DOLLAR_SAVINGS_ACCOUNT && ammount > 0){
+         if(ammount <= clients[i].dolarBalance)
+            return true;
+    } 
+    return false
+}
 
-
+function newTransference(beneficiaryClientId, payerClientId, ammount, type){
+    for(let i = 0; clients.length < i; i++){
+        if(clients[i].id == payerClientId){
+            clients[i].balance -= ammount 
+            let result = HasSufficentBudget(type, ammount);
+        }            
+        else if(clients[i] == beneficiaryClientId){
+            clients[i].balance += ammount           
+        }
+        else{
+        return false
+        }
+    }
+}

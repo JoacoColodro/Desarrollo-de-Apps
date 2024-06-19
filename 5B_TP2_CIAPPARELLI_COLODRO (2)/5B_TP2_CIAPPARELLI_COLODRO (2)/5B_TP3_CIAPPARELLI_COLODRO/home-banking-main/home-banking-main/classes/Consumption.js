@@ -36,7 +36,7 @@ function filterConsumptionById(consumptionId){
     
     return consumptions[i]
 }
-function filterConsumptionBycreditCardId(cardId){
+function filterConsumptionByCreditCardId(cardId){
     let filteredConsumptions = []
     for(let i in consumptions){
         if(consumptions[i].cardId == cardId){
@@ -56,7 +56,7 @@ function addNewConsumption(cardId, placeName, ammount, date){
         return;
     }
     consumptions.push(new Consumption(cardId, placeName, ammount, date))
-    creditCards.balance += ammount;
+    creditCards[filterCreditCardById(cardId)].balance += ammount;
     return true
     
 }
