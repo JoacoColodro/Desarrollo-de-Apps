@@ -1,4 +1,4 @@
 function logIn(){
-    let dni = document.getElementById("DNI")
+    let dni = document.getElementById("dni")
     let password = document.getElementById("password") 
 }
