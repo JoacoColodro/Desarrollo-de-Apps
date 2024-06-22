@@ -6,7 +6,7 @@ const PESOS_SAVINGS_ACCOUNT = "pesos"
 const PRECIO_DEL_DOLAR = 1200
 
 class Client {
-    constructor(dni, password, name, surname, overdraftLimit, hasDolarSavingsAccount){
+    constructor(dni, password, name, surname, hasDolarSavingsAccount){
         this.id = clientId
         clientId++
 
@@ -16,7 +16,7 @@ class Client {
         this.surname = surname
 
         this.balance = 0
-        this.overdraftFacility = overdraftLimit
+        this.overdraftFacility = 3000
         this.creditCardNumber = 777777777777 + this.id
         
         let currentDate = new Date() 
