@@ -6,13 +6,15 @@ function getPassword() {
     return document.getElementById("password").value;
 }
 
-function getName() {
-    return document.getElementById("name").value;
+function getName(){
+    return document.getElementById("name").value
 }
 
-function getSurname() {
-    return document.getElementById("surname").value;
+function getDollarAccount(){
+    return document.getElementById("dollarAccount").checked
 }
+
+
 
 function changeScreen() {
     const homepage = document.getElementById("homepage");
@@ -38,3 +40,7 @@ function changeScreenRegister() {
         login.style.display = "none";
     }
 }
+
+
+
+

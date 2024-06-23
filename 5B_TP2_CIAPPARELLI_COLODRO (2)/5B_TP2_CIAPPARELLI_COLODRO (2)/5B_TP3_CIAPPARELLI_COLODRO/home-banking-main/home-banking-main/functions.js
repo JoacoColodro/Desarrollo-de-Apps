@@ -33,7 +33,7 @@ function logIn(dni, password) {
 }
 
 function validateNewClient(dni, password, name, surname){
-    if(!(dni instanceof Number && dni.length > 8)){
+    if(dni.length >= 8){
         return false;
     }
     else if(password.length == 0){
@@ -45,26 +45,21 @@ function validateNewClient(dni, password, name, surname){
     else if(surname.length == 0){
         return false;
     }
+    else {
+        return true
+    }
 
 }
 
-
-
-
-
 function registerNewClient(dni, password, name, surname, hasDolarSavingsAccount){
-    let clientExist = clientExists(dni, password);
-    if(clientExist == 0){
-        return alert("El dni no es válido")
+    let validatedNewClient = validateNewClient(dni, password, name, surname);
+    if(validatedNewClient == 0){
+        return alert("Los datos no son válidos")
     }
-    
-    else if (userExist == 1){
-        return alert("El dni y la contraseña no son válidos")
-    }
-
-    else{
+    else {
         clients.push(new Client(dni, password, name, surname, hasDolarSavingsAccount))
         changeScreen()
         idActiveClient = clientId
     }
 }
+

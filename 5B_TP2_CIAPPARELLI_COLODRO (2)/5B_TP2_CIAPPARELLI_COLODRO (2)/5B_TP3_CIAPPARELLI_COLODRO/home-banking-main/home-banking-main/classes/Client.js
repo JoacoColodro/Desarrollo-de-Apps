@@ -124,16 +124,16 @@ class Client {
 }
 
 const clients = [
-    new Client('12345678A', 'password1', 'John', 'Doe', 1000, true),
-    new Client('87654321B', 'password2', 'Jane', 'Smith', 1500, false),
-    new Client('11111111C', 'password3', 'Alice', 'Johnson', 2000, true),
-    new Client('22222222D', 'password4', 'Bob', 'Williams', 2500, false),
-    new Client('33333333E', 'password5', 'Michael', 'Brown', 3000, true),
-    new Client('44444444F', 'password6', 'Emily', 'Davis', 3500, false),
-    new Client('55555555G', 'password7', 'William', 'Miller', 4000, true),
-    new Client('66666666H', 'password8', 'Olivia', 'Wilson', 4500, false),
-    new Client('77777777I', 'password9', 'James', 'Taylor', 5000, true),
-    new Client('88888888J', 'password10', 'Emma', 'Moore', 5500, false)
+    new Client('12345678', 'password1', 'John', 'Doe', 1000, true),
+    new Client('87654321', 'password2', 'Jane', 'Smith', 1500, false),
+    new Client('11111111', 'password3', 'Alice', 'Johnson', 2000, true),
+    new Client('22222222', 'password4', 'Bob', 'Williams', 2500, false),
+    new Client('33333333', 'password5', 'Michael', 'Brown', 3000, true),
+    new Client('44444444', 'password6', 'Emily', 'Davis', 3500, false),
+    new Client('55555555', 'password7', 'William', 'Miller', 4000, true),
+    new Client('66666666', 'password8', 'Olivia', 'Wilson', 4500, false),
+    new Client('77777777', 'password9', 'James', 'Taylor', 5000, true),
+    new Client('88888888', 'password10', 'Emma', 'Moore', 5500, false)
 ];
 
 console.log("Clientes:", clients);
