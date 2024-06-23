@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TP 2 - CarraBank - Cuentas bancarias</title>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    </head>
+    <body class="container">
+        <header>                
+            <h4>TP2 - CarraBank - Cuentas bancarias</h4>
+            <h5>Ejercitación de Objetos y DOM en JavaScript</h5>
+            <h4>Alumnos: Franco Ciapparelli y Joaquin Colodro</h4>
+            <br>
+        </header>
+        <main>
+            <!--Sección de login y registro-->
+            <section>
+                <div id="login">
+                    <div class="col-auto shadow p-3 mb-5 bg-white rounded">
+                        <h3>Bienvenido a CarraBank</h3>
+                        <div class="form-group">
+                            <label for="dni">DNI</label>
+                            <input class="form-control" type="text" id="dni">
+                        </div>   
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input class="form-control" type="text" id="password">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-success btn-lg btn-block form-check-control" onclick="logIn(getDni(), getPassword())">Ingresar</button>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-danger btn-lg btn-block form-check-control" onclick="changeScreenRegister()">Registrarse</button>
+                        </div>
+                    </div>
+                </div> 
+            </section>
+
+            <section>
+                <div id="register" style="display: none">
+                    <div class="col-auto shadow p-3 mb-5 bg-white rounded">
+                        <h3>Bienvenido a CarraBank</h3>
+                        <div class="form-group">
+                            <label for="dni">DNI</label>
+                            <input class="form-control" type="text" id="dni">
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Apellido</label>
+                            <input class="form-control" type="text" id="surname">
+                        </div>     
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input class="form-control" type="text" id="name">
+                        </div>  
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input class="form-control" type="text" id="password">
+                        </div>
+                        <div class="form-group form-check">
+                            <label for="dollarAccount">¿Querés una caja de ahorro en dólares?</label>
+                            <input class="form-control" type="checkbox" id="dollarAccount">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-danger btn-lg btn-block form-check-control" onclick="registerNewClient(getDni(), getPassword(), )">Registrarse</button>
+                        </div>
+                    </div>
+                </div> 
+            </section>
+
+
+            <!--Sección homebanking-->
+            <section>
+                <div id="homepage" style="display: none">
+                    <div class="col-auto shadow p-3 mb-5 bg-white rounded">
+                        <h3>Ingresar y extraer dinero</h3>
+                        <div class="form-group">     
+                            <!--Agregar el resto de las etiquetas necesarias-->
+                        </div>
+                        <div class="form-group">                
+                            <button class="form-check-control btn btn-primary">Ingresar</button>
+                            <button class="form-check-control btn btn-danger">Extraer</button>
+                        </div>
+                    </div> <!-- Cierre col-auto -->
+                    
+                    <div class="col-auto shadow p-3 mb-5 bg-white rounded">
+                        <h3>Compra / venta de dólares</h3>
+                        <div class="form-group">     
+                            <!--Agregar el resto de las etiquetas necesarias-->
+                        </div>
+                        <div class="form-group">                
+                            <button class="form-check-control btn btn-primary">Realizar operación</button>
+                        </div>
+                    </div> <!-- Cierre col-auto -->
+                    
+                    <div class="col-auto shadow p-3 mb-5 bg-white rounded">
+                        <h3>Máximos y mínimos</h3>
+                        <div class="form-group">                
+                            <button class="form-check-control btn btn-info">Obtener mayor</button>
+                            <button class="form-check-control btn btn-info">Obtener menor</button>
+                        </div>
+                    </div> <!-- Cierre col-auto -->
+                    
+                    <div class="col-auto shadow p-3 mb-5 bg-white rounded">
+                        <h3>Listados</h3>
+                        <div class="form-group">
+                            <button class="form-check-control btn btn-info">Listar clientes</button>
+                            <button class="form-check-control btn btn-success">Listar clientes CSV</button>
+                            <button class="form-check-control btn btn-danger">Listar morosos</button>
+                        </div>
+                        <table class="table">
+                        </table>
+                    </div> <!-- Cierre col-auto -->
+                    
+                    <div class="col-auto shadow p-3 mb-5 bg-white rounded">
+                        <h3>Busqueda de un cliente</h3>                    
+                        <div class="form-group">
+                            <label for="searchByContent">Buscar clientes por apellido o DNI</label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div> <!-- Cierre col-auto -->
+                    
+                    <div class="col-auto shadow p-3 mb-5 bg-white rounded">
+                        <h3>Realizar transferencia</h3>
+                        <div class="form-group">
+                            <label for="selectClienteOrigen">Cliente que envía el dinero</label>
+                            <select class="form-control" id="selectClienteOrigen">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectClienteDestino">Cliente que recibe el dinero</label>
+                            <select class="form-control" id="selectClienteDestino">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="montoTransferencia">Monto a transferir ($)</label>
+                            <input class="form-control" type="text" id="montoTransferencia">
+                        </div>
+                        <div class="form-group">
+                            <label for="monedaTransferencia">Moneda</label>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radioPesos" name="radioMoneda" class="custom-control-input">
+                                <label class="custom-control-label" for="radioPesos">Pesos</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="radioDolares" name="radioMoneda" class="custom-control-input">
+                                <label class="custom-control-label" for="radioDolares">Dólares</label>
+                            </div>
+                        </div>
+                        <button class="form-check-control btn btn-success">Transferir</button>
+                    </div> <!-- Cierre col-auto -->
+                    
+                    <div class="col-auto shadow p-3 mb-5 bg-white rounded">
+                        <h3>Añadir nuevo consumo de tarjeta</h3>
+                        <div class="form-group">
+                            <label for="selectClienteNuevoConsumo">Tarjeta que realizó el consumo</label>
+                            <select class="form-control" id="selectClienteNuevoConsumo">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nuevoLocal">Nombre del local</label>
+                            <input class="form-control" type="text" id="nuevoLocal">
+                        </div>
+                        <div class="form-group">
+                            <label for="nuevoConsumo">Consumo realizado ($)</label>
+                            <input class="form-control" type="text" id="nuevoConsumo">
+                        </div>
+                        <div class="form-group">
+                            <label for="fechaConsumo">Fecha</label>
+                            <input class="form-control" type="date" id="fechaConsumo">
+                        </div>
+                        <button class="form-check-control btn btn-success">Añadir consumo</button>
+                    </div> <!-- Cierre col-auto -->
+                    
+                    <div class="col-auto shadow p-3 mb-5 bg-white rounded">
+                        <h3>Pagar tarjeta</h3>
+                        <div class="form-group">
+                            <label for="selectClientePagoTarjeta">Tarjeta a abonar</label>
+                            <select class="form-control" id="selectClientePagoTarjeta">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="montoPagarTarjeta">Monto a abonar ($)</label>
+                            <input class="form-control" type="text" id="montoPagarTarjeta">
+                        </div>
+                        <button class="form-check-control btn btn-success">Pagar</button>
+                        <button class="form-check-control btn btn-info">Realizar pago total</button>
+                    </div> 
+                </div> 
+            </section>
+        </main>
+        <script src="classes/Client.js"></script>
+        <script src="classes/Consumption.js"></script>
+        <script src="classes/CreditCard.js"></script>
+        <script src="dom.js"></script>
+        <script src="functions.js"></script>
+    </body>
+</html>
