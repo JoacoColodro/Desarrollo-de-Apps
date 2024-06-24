@@ -69,6 +69,10 @@ function changeScreenRegisterLogin() {
     }
 }
 
-
-
-
+function depositMoneyDom(){
+    let ammount = "";
+    let currency = "";
+    ammount = document.getElementById("ammount").value;
+    currency = document.getElementById("currency").value;
+    
+}

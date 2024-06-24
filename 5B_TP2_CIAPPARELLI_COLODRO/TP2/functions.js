@@ -1,4 +1,5 @@
 let idActiveClient = 1
+let loggedUserId = 0
 
 function clientExists(dni, password) {
     let i = 0;
@@ -68,7 +69,7 @@ function registerNewClient(dni, password, name, surname, hasDolarSavingsAccount)
     else {
         clients.push(new Client(dni, password, name, surname, hasDolarSavingsAccount))
         changeScreenRegisterLogin()
-        idActiveClient = clientId
+        idActiveClient = clientId;
     }
 }
 
@@ -77,4 +78,3 @@ function logOut(){
     document.getElementById("password").value = ""
     changeScreen();
 }
-
