@@ -33,33 +33,48 @@ function logIn(dni, password) {
 }
 
 function validateNewClient(dni, password, name, surname){
-    if(dni.length >= 8){
+    console.log(dni)
+    console.log(password)
+    console.log(name)
+    console.log(surname)
+    if(dni.length > 8){
+        console.log("Falla el DNI")
         return false;
     }
-    else if(password.length == 0){
+    if(password.length == 0){
+        console.log("Falla la password")
+        console.log(password)
         return false;
     }
-    else if(name.length == 0){
+    if (name.length == 0){
+        console.log("Falla el nombre")
         return false;
     }    
-    else if(surname.length == 0){
+    if (surname.length == 0){
+        console.log("Falla el apellido")
         return false;
     }
-    else {
-        return true
-    }
+    
+    return true
+    
 
 }
 
 function registerNewClient(dni, password, name, surname, hasDolarSavingsAccount){
     let validatedNewClient = validateNewClient(dni, password, name, surname);
-    if(validatedNewClient == 0){
+    if(!validatedNewClient){
         return alert("Los datos no son válidos")
     }
     else {
         clients.push(new Client(dni, password, name, surname, hasDolarSavingsAccount))
-        changeScreen()
+        changeScreenRegisterLogin()
         idActiveClient = clientId
     }
+}
+
+function logOut(){
+    document.getElementById("dni").value = ""
+    document.getElementById("password").value = ""
+    changeScreen();
 }
 

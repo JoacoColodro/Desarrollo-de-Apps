@@ -46,27 +46,27 @@
                     <div class="col-auto shadow p-3 mb-5 bg-white rounded">
                         <h3>Bienvenido a CarraBank</h3>
                         <div class="form-group">
-                            <label for="dni">DNI</label>
-                            <input class="form-control" type="text" id="dni">
+                            <label for="dniRegister">DNI</label>
+                            <input class="form-control" type="text" id="dniRegister">
                         </div>
                         <div class="form-group">
                             <label for="surname">Apellido</label>
                             <input class="form-control" type="text" id="surname">
                         </div>     
                         <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input class="form-control" type="text" id="name">
+                            <label for="nameRegister">Nombre</label>
+                            <input class="form-control" type="text" id="nameRegister">
                         </div>  
                         <div class="form-group">
-                            <label for="password">Contraseña</label>
-                            <input class="form-control" type="text" id="password">
+                            <label for="passwordRegister">Contraseña</label>
+                            <input class="form-control" type="text" id="passwordRegister">
                         </div>
                         <div class="form-group form-check">
                             <label for="dollarAccount">¿Querés una caja de ahorro en dólares?</label>
                             <input class="form-control" type="checkbox" id="dollarAccount">
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary btn-danger btn-lg btn-block form-check-control" onclick="registerNewClient(getDni(), getPassword(), )">Registrarse</button>
+                            <button class="btn btn-primary btn-danger btn-lg btn-block form-check-control" onclick="registerNewClient(getRegisterDni(), getPasswordRegister(), getNameRegister(), getSurname(), getDollarAccount())">Registrarse</button>
                         </div>
                     </div>
                 </div> 
@@ -76,6 +76,7 @@
             <!--Sección homebanking-->
             <section>
                 <div id="homepage" style="display: none">
+                    <button id="logOut" onclick="logOut()">Cerrar Sesion</button>
                     <div class="col-auto shadow p-3 mb-5 bg-white rounded">
                         <h3>Ingresar y extraer dinero</h3>
                         <div class="form-group">     

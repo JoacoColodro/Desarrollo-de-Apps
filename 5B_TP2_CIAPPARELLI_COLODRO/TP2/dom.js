@@ -2,12 +2,28 @@ function getDni() {
     return document.getElementById("dni").value;
 }
 
+function getRegisterDni() {
+    return document.getElementById("dniRegister").value;
+}
+
 function getPassword() {
     return document.getElementById("password").value;
 }
 
+function getPasswordRegister(){
+    return document.getElementById("passwordRegister").value
+}
+
 function getName(){
     return document.getElementById("name").value
+}
+
+function getNameRegister(){
+    return document.getElementById("nameRegister").value
+}
+
+function getSurname(){
+    return document.getElementById("surname").value
 }
 
 function getDollarAccount(){
@@ -38,6 +54,18 @@ function changeScreenRegister() {
     } else {
         register.style.display = "";
         login.style.display = "none";
+    }
+}
+
+function changeScreenRegisterLogin() {
+    const homepage = document.getElementById("homepage");
+    const register = document.getElementById("register");
+    if (homepage.style.display !== "none") {
+        homepage.style.display = "none";
+        register.style.display = "";
+    } else {
+        homepage.style.display = "";
+        register.style.display = "none";
     }
 }
 
