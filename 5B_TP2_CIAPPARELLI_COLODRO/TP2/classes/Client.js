@@ -3,7 +3,7 @@ let clientId = 1
 const DOLLAR_SAVINGS_ACCOUNT = "dollar"
 const PESOS_SAVINGS_ACCOUNT = "pesos"
 
-const PRECIO_DEL_DOLAR = 1200
+const PRECIO_DEL_DOLAR = 1300
 
 class Client {
     constructor(dni, password, name, surname, hasDolarSavingsAccount){

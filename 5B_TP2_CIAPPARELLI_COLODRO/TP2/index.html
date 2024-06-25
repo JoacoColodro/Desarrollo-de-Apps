@@ -82,25 +82,28 @@
                         <div class="form-group">     
                             <label for="ammount">Monto</label>
                             <input class= "form-control" type="text" id="ammount">
-                            <select id="currency" > 
-                                <option>pesos</option>
-                                <option>dollar</option>
-                            </select>  <!--Agregar el resto de las etiquetas necesarias-->
+                            <select id="currency"> 
+                                <option value="">Dolar</option>
+                                <option>Pesos</option>
+                            </select>
+                            <h2 id="depositMoneyDom"></h2>  <!--Agregar el resto de las etiquetas necesarias-->
                         </div>
                         <div class="form-group">                
-                            <button id="depositMoney" class="form-check-control btn btn-primary">Ingresar</button>
-                            <button id= "takeMoney" class="form-check-control btn btn-danger">Extraer</button>
+                            <button id="depositMoney" class="form-check-control btn btn-primary" onclick="depositMoneyDom">Ingresar</button>
+                            <button id= "takeMoney" class="form-check-control btn btn-danger" onclick="takeMoneyDom">Extraer</button>
                         </div>
                     </div> <!-- Cierre col-auto -->
                     
                     <div class="col-auto shadow p-3 mb-5 bg-white rounded">
                         <h3>Compra / venta de dólares</h3>
-                        <div class="form-group">     
-                            <input class= "form-control" type="text" id="pesosAmmount">
+                        <div class="form-group">  
+                            <label for="ammount">Monto</label>     
+                            <input class= "form-control" type="text" id="ammount">
                             <!--Agregar el resto de las etiquetas necesarias-->
                         </div>
                         <div class="form-group">                
-                            <button class="form-check-control btn btn-primary">Realizar operación</button>
+                            <button id="sellDollars" class="form-check-control btn btn-primary">Vender Dólares</button>
+                            <button id="buyDollars" class="form-check-control btn btn-primary">Comprar Dolares</button>
                         </div>
                     </div> <!-- Cierre col-auto -->
                     

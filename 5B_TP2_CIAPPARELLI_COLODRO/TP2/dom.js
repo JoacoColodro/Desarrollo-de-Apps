@@ -69,10 +69,28 @@ function changeScreenRegisterLogin() {
     }
 }
 
-function depositMoneyDom(){
-    let ammount = "";
-    let currency = "";
-    ammount = document.getElementById("ammount").value;
-    currency = document.getElementById("currency").value;
+
+
+function depositMoneyDom() {
+    let ammount = document.getElementById("ammount").value;
+    let currency = document.getElementById("currency").value;
+   
+    if (!ammount || !currency) {
+        return alert("Por favor ingrese todos los datos.");
+    }
+
+    ammount = parseFloat(ammount);
+    if (!(ammount instanceof Number) || ammount <= 0) {
+        return alert("Por favor ingrese un monto válido.");
+    }
+   
+    let filteredClient = filterClientsById();
+    let depositedMoney = filteredClient.depositMoney(ammount, currency);
+
+    document.getElementById("Dolar").innerHTML = filteredClient.getBalance("Dolar");
+    document.getElementById("Pesos").innerHTML = filteredClient.getBalance("Pesos");
+}
+
+function extractMoneyDom(){
     
 }
