@@ -19,6 +19,7 @@ const consumptions = [
     new Consumption(5, new Date(2019, 5, 20), 'Coffee Shop E', 20),
     new Consumption(6, new Date(2020, 9, 12), 'Clothing Store F', 200),
     new Consumption(7, new Date(2021, 11, 8), 'Electronics Store G', 500),
+    new Consumption(7, new Date(2021, 11, 8), 'Minecraft', 1500),
     new Consumption(8, new Date(2022, 1, 30), 'Bookstore H', 80),
     new Consumption(9, new Date(2023, 4, 18), 'Gym I', 120),
     new Consumption(10, new Date(2024, 6, 3), 'Travel Agency J', 1000)
@@ -46,7 +47,7 @@ function filterConsumptionByCreditCardId(cardId){
     return filteredConsumptions
 }
 
-function addNewConsumption(cardId, placeName, ammount, date){
+function addNewConsumption(cardId, date, placeName, ammount){
     if(!(date instanceof Date)){
         console.log("La fecha no es válida")
         return;
@@ -55,8 +56,8 @@ function addNewConsumption(cardId, placeName, ammount, date){
         console.log("La tarjeta de crédito está vencida")
         return;
     }
-    consumptions.push(new Consumption(cardId, placeName, ammount, date))
-    creditCards[filterCreditCardById(cardId)].balance += ammount;
+    consumptions.push(new Consumption(cardId, date, placeName, ammount))
+    filterCreditCardById(cardId).balance += ammount;
     return true
     
 }

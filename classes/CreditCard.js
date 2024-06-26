@@ -36,7 +36,7 @@ console.log("Tarjetas:", creditCards)
 
 function filterCreditCardById(cardId){
     let i = 0
-    while(creditCards[i].id != cardId && i < creditCards.length){
+    while(creditCards[i].cardId != cardId && i < creditCards.length){
         i++
     }
     if(i >= creditCards.length)

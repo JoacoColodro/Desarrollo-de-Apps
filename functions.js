@@ -19,12 +19,12 @@ function clientExists(dni, password) {
 }
 
 function logIn(dni, password) {
-    let clientsId = clientExists(dni, password);
-    console.log(clientsId)
-    if (clientsId >= 1) {
+    let clientId = clientExists(dni, password);
+    if (clientId >= 1) {
+        idActiveClient = clientId;
         changeScreen();
         return true;
-    } else if (clientsId == 0) {
+    } else if (clientId == 0) {
         alert("La contraseña es incorrecta");
         return false;
     } else { 
@@ -34,10 +34,6 @@ function logIn(dni, password) {
 }
 
 function validateNewClient(dni, password, name, surname){
-    console.log(dni)
-    console.log(password)
-    console.log(name)
-    console.log(surname)
     if(dni.length > 8){
         console.log("Falla el DNI")
         return false;
@@ -69,7 +65,7 @@ function registerNewClient(dni, password, name, surname, hasDolarSavingsAccount)
     else {
         clients.push(new Client(dni, password, name, surname, hasDolarSavingsAccount))
         changeScreenRegisterLogin()
-        idActiveClient = clientId;
+        idActiveClient = clients[clients.length - 1].id;
     }
 }
 
