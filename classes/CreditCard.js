@@ -17,6 +17,22 @@ class CreditCard {
         this.balance = 0
         this.paymentInterest = paymentInterest
     }
+
+    payCreditCard(){
+        if (amount < this.balance * 0.1) {
+            return -1; // Payment is less than the minimum payment required
+        }
+
+        this.balance -= amount;
+
+        if (this.balance <= 0) {
+            this.balance = 0;
+            return 1; // Payment covers the total balance or more
+        }
+
+        return 0; // Payment is made but there's still balance remaining
+    }
+    
 }   
 
 const creditCards = [
@@ -56,4 +72,3 @@ function filterCreditCardByClientId(clientId){
     }
     return filteredCreditCard
 }
-
