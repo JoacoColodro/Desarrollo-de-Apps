@@ -136,8 +136,10 @@
                         <h3>Busqueda de un cliente</h3>                    
                         <div class="form-group">
                             <label for="searchByContent">Buscar clientes por apellido o DNI</label>
-                            <input class="form-control" type="text">
+                            <input class="form-control" type="text" id="filterButton" onkeyup="filterClientsByDom()">
                         </div>
+                        <table class="table table-striped">
+                        </table>
                     </div> <!-- Cierre col-auto -->
                     
                     <div class="col-auto shadow p-3 mb-5 bg-white rounded">

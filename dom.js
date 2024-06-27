@@ -249,6 +249,35 @@ ${client.dni},${client.name},${client.surname}`;
     console.log(csv)
 }
 
+function filterClientsByDom(){
+    table = document.getElementsByClassName("table")[2]
+    let tableRows = `<thead>
+                                <tr>
+                                    <th>DNI</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">`;
+    for (let i = 0; i < clients.length; i++){
+        let client = clients[i]
+        let filterConditions = document.getElementById("filterButton").value.toLowerCase()
+        if (client.surname.toLowerCase().includes(filterConditions) || client.dni.toLowerCase().includes(filterConditions) || client.name.toLowerCase().includes(filterConditions)){
+        tableRows += `
+        <tr>
+            <td>${client.dni}</td>
+            <td>${client.name}</td>
+            <td>${client.surname}</td>
+        </tr>
+    `;
+       }
+        
+    }
+
+    tableRows += `</tbody>`
+    table.innerHTML = tableRows;
+}
+
 function clientWithMoreBalanceDom(){
     client = filterClientWithMoreBalance()
     clientCards = filterCreditCardByClientId(client.id)
