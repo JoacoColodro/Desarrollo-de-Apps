@@ -183,29 +183,49 @@ function filterClientWithLessBalance(){
     return clients[clientWithLessBalance]
 }
 
-function hasSufficentBudget(type, ammount){
-    if(type == PESOS_SAVINGS_ACCOUNT && ammount > 0){
-        if(ammount <= clients[i].balance)
-            return true;
+function hasSufficentBudget(client, type, amount) {
+    if (type == PESOS_SAVINGS_ACCOUNT && amount > 0) {
+        return amount <= client.balance;
     }    
-    else if(type == DOLLAR_SAVINGS_ACCOUNT && ammount > 0){
-         if(ammount <= clients[i].dolarBalance)
-            return true;
-    } 
-    return false
+    else if (type == DOLLAR_SAVINGS_ACCOUNT && amount > 0) {
+        return amount <= client.dollarBalance;
+    }
+    return false;
 }
 
-function newTransference(beneficiaryClientId, payerClientId, ammount, type){
-    for(let i = 0; clients.length < i; i++){
-        if(clients[i].id == payerClientId){
-            clients[i].balance -= ammount 
-            let result = hasSufficentBudget(type, ammount);
-        }            
-        else if(clients[i] == beneficiaryClientId){
-            clients[i].balance += ammount           
-        }
-        else{
-        return false
+function newTransference(beneficiaryClientId, payerClientId, amount, type) {
+    let payer = null;
+    let beneficiary = null;
+    amount = new Number(amount)
+
+    // Encuentra el pagador y el beneficiario
+    for (let i = 0; i < clients.length; i++) {
+        if (clients[i].id == payerClientId) {
+            payer = clients[i];
+        } else if (clients[i].id == beneficiaryClientId) {
+            beneficiary = clients[i];
         }
     }
+
+    // Verifica si el pagador y el beneficiario fueron encontrados
+    if (!payer || !beneficiary) {
+        return false;
+    }
+
+    // Verifica si el pagador tiene suficiente presupuesto
+    if (!hasSufficentBudget(payer, type, amount)) {
+        return false;
+    }
+
+    // Realiza la transferencia
+    if (type == PESOS_SAVINGS_ACCOUNT) {
+        payer.balance -= amount;
+        beneficiary.balance += amount;
+    } else if (type == DOLLAR_SAVINGS_ACCOUNT) {
+        payer.dollarBalance -= amount;
+        beneficiary.dollarBalance += amount;
+    }
+
+    return true;
 }
+

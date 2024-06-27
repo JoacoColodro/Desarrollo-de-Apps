@@ -64,8 +64,8 @@ function registerNewClient(dni, password, name, surname, hasDolarSavingsAccount)
     }
     else {
         clients.push(new Client(dni, password, name, surname, hasDolarSavingsAccount))
-        changeScreenRegisterLogin()
         idActiveClient = clients[clients.length - 1].id;
+        changeScreenRegisterLogin()
     }
 }
 

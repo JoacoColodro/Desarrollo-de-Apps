@@ -57,6 +57,7 @@ function addNewConsumption(cardId, date, placeName, ammount){
         return;
     }
     consumptions.push(new Consumption(cardId, date, placeName, ammount))
+    ammount = new Number(ammount)
     filterCreditCardById(cardId).balance += ammount;
     return true
     

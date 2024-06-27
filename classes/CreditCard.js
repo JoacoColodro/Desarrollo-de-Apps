@@ -27,6 +27,8 @@ const creditCards = [
     new CreditCard(clients[4].id, 'Mastercard', 0.5),
     new CreditCard(clients[5].id, 'American Express', 0.9),
     new CreditCard(clients[6].id, 'Visa', 0.2),
+    new CreditCard(clients[6].id, 'American Express', 0.9),
+    new CreditCard(clients[6].id, 'Mastercard', 0.5),
     new CreditCard(clients[7].id, 'Mastercard', 0.5),
     new CreditCard(clients[8].id, 'American Express', 0.9),
     new CreditCard(clients[9].id, 'Visa', 0.9)

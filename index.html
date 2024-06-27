@@ -122,11 +122,11 @@
                     <div class="col-auto shadow p-3 mb-5 bg-white rounded">
                         <h3>Listados</h3>
                         <div class="form-group">
-                            <button class="form-check-control btn btn-info">Listar clientes</button>
+                            <button class="form-check-control btn btn-info" onclick="showClientsDom()">Listar clientes</button>
                             <button class="form-check-control btn btn-success">Listar clientes CSV</button>
                             <button class="form-check-control btn btn-danger">Listar morosos</button>
                         </div>
-                        <table class="table">
+                        <table class="table table-striped">
                         </table>
                     </div> <!-- Cierre col-auto -->
                     
@@ -141,15 +141,12 @@
                     <div class="col-auto shadow p-3 mb-5 bg-white rounded">
                         <h3>Realizar transferencia</h3>
                         <div class="form-group">
-                            <label for="selectClienteOrigen">Cliente que envía el dinero</label>
-                            <select class="form-control" id="selectClienteOrigen">
-                                <option value=""></option>
-                            </select>
+                            <p>Cliente que envía el dinero</p>
+                            <h5 id="selectClienteOrigen"></h4>
                         </div>
                         <div class="form-group">
                             <label for="selectClienteDestino">Cliente que recibe el dinero</label>
-                            <select class="form-control" id="selectClienteDestino">
-                                <option value=""></option>
+                            <select class="form-control selectsUsers" id="selectClienteDestino">
                             </select>
                         </div>
                         <div class="form-group">
@@ -159,23 +156,22 @@
                         <div class="form-group">
                             <label for="monedaTransferencia">Moneda</label>
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="radioPesos" name="radioMoneda" class="custom-control-input">
+                                <input type="radio" id="radioPesos" name="radioMoneda" class="custom-control-input" value="pesos">
                                 <label class="custom-control-label" for="radioPesos">Pesos</label>
                             </div>
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="radioDolares" name="radioMoneda" class="custom-control-input">
+                                <input type="radio" id="radioDolares" name="radioMoneda" class="custom-control-input" value="dollar">
                                 <label class="custom-control-label" for="radioDolares">Dólares</label>
                             </div>
                         </div>
-                        <button class="form-check-control btn btn-success">Transferir</button>
+                        <button class="form-check-control btn btn-success" onclick="newTransferenceDom()">Transferir</button>
                     </div> <!-- Cierre col-auto -->
                     
                     <div class="col-auto shadow p-3 mb-5 bg-white rounded">
                         <h3>Añadir nuevo consumo de tarjeta</h3>
                         <div class="form-group">
                             <label for="selectClienteNuevoConsumo">Tarjeta que realizó el consumo</label>
-                            <select class="form-control" id="selectClienteNuevoConsumo">
-                                <option value=""></option>
+                            <select class="form-control selectsCards" id="selectClienteNuevoConsumo">
                             </select>
                         </div>
                         <div class="form-group">
@@ -190,14 +186,14 @@
                             <label for="fechaConsumo">Fecha</label>
                             <input class="form-control" type="date" id="fechaConsumo">
                         </div>
-                        <button class="form-check-control btn btn-success">Añadir consumo</button>
+                        <button class="form-check-control btn btn-success" onclick="addNewConsumptionDom()">Añadir consumo</button>
                     </div> <!-- Cierre col-auto -->
                     
                     <div class="col-auto shadow p-3 mb-5 bg-white rounded">
                         <h3>Pagar tarjeta</h3>
                         <div class="form-group">
                             <label for="selectClientePagoTarjeta">Tarjeta a abonar</label>
-                            <select class="form-control" id="selectClientePagoTarjeta">
+                            <select class="form-control selectsCards" id="selectClientePagoTarjeta">
                                 <option value=""></option>
                             </select>
                         </div>
