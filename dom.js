@@ -180,7 +180,14 @@ function addNewConsumptionDom(){
     let date = document.getElementById("fechaConsumo").valueAsDate
     let placeName = document.getElementById("nuevoLocal").value
     let ammount = document.getElementById("nuevoConsumo").value
-    addNewConsumption(cardId, date, placeName, ammount)
+    let result = addNewConsumption(cardId, date, placeName, ammount);
+    if (result) {
+                document.getElementById("message").innerHTML = "<div class='alert alert-success'>Consumo agregado correctamente.</div>";
+                document.getElementById("selectClienteNuevoConsumo").value = '';
+                document.getElementById("fechaConsumo").value = '';
+                document.getElementById("nuevoLocal").value = '';
+                document.getElementById("nuevoConsumo").value = '';
+            }
 }
 
 function showClientsDom(){
