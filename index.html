@@ -123,9 +123,11 @@
                         <h3>Listados</h3>
                         <div class="form-group">
                             <button class="form-check-control btn btn-info" onclick="showClientsDom()">Listar clientes</button>
-                            <button class="form-check-control btn btn-success">Listar clientes CSV</button>
-                            <button class="form-check-control btn btn-danger">Listar morosos</button>
+                            <button class="form-check-control btn btn-success" onclick="clientsCSV()">Listar clientes CSV</button>
+                            <button class="form-check-control btn btn-danger" onclick="showClientsNegativeBalanceDom()">Listar morosos</button>
                         </div>
+                        <table class="table table-striped">
+                        </table>
                         <table class="table table-striped">
                         </table>
                     </div> <!-- Cierre col-auto -->

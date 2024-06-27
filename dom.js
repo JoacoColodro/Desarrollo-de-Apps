@@ -209,6 +209,46 @@ function showClientsDom(){
     table.innerHTML = tableRows;
 }
 
+function showClientsNegativeBalanceDom(){
+    table = document.getElementsByClassName("table")[1]
+    let tableRows = `<thead>
+                                <tr>
+                                    <th>DNI</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">`;
+    for (let i = 0; i < clients.length; i++){
+        let client = clients[i]
+       if (client.balance < 0){
+        tableRows += `
+        <tr>
+            <td>${client.dni}</td>
+            <td>${client.name}</td>
+            <td>${client.surname}</td>
+        </tr>
+    `;
+       }
+        
+    }
+
+    tableRows += `</tbody>`
+    table.innerHTML = tableRows;
+}
+
+function clientsCSV(){
+    let csv = `${clients[0].dni},${clients[0].name},${clients[0].surname}`
+    for (let i = 1; i < clients.length; i++){
+        let client = clients[i]
+       
+        csv += `
+${client.dni},${client.name},${client.surname}`;
+    }
+
+    console.log(csv)
+}
+
 function clientWithMoreBalanceDom(){
     client = filterClientWithMoreBalance()
     clientCards = filterCreditCardByClientId(client.id)
