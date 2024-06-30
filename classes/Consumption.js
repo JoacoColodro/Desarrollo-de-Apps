@@ -13,6 +13,8 @@ class Consumption {
 
 const consumptions = [
     new Consumption(1, new Date(2015, 3, 25), 'Restaurant A', 50),
+    new Consumption(1, new Date(2015, 3, 26), 'Restaurant B', 55),
+    new Consumption(1, new Date(2015, 3, 27), 'Restaurant C', 50),
     new Consumption(2, new Date(2016, 7, 10), 'Supermarket B', 100),
     new Consumption(3, new Date(2017, 10, 5), 'Cinema C', 30),
     new Consumption(4, new Date(2018, 2, 15), 'Gas Station D', 70),

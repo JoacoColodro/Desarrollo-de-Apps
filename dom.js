@@ -285,6 +285,25 @@ function filterClientsByDom(){
     table.innerHTML = tableRows;
 }
 
+function creditCardPaymentDom(){
+    console.log("ok")
+    let clientCreditCards = filterCreditCardByClientId(idActiveClient)
+    let selectedCreditCard = document.getElementById("selectClientePagoTarjeta").value
+    let ammount = document.getElementById("montoPagarTarjeta").value
+    for (let i = 0; i < clientCreditCards.length; i++){
+        let creditCard = clientCreditCards[i]
+        if (creditCard.cardId == selectedCreditCard){
+            console.log(creditCard)
+            let result = creditCard.payCreditCard(ammount)
+            document.getElementById("paymentResult").innerHTML = `<div class='alert'>${result}</div>`;
+        }
+    }
+}
+
+function creditCardFullPaymentDom(){
+    
+}
+
 function clientWithMoreBalanceDom(){
     client = filterClientWithMoreBalance()
     clientCards = filterCreditCardByClientId(client.id)
@@ -323,7 +342,7 @@ function clientWithMoreBalanceDom(){
         </table>
     </div>
 </div>`
-    document.getElementById("homepage").innerHTML += text
+    document.getElementById("minAndMax").innerHTML += text
 }
 
 function clientWithLessBalanceDom(){
@@ -364,7 +383,7 @@ function clientWithLessBalanceDom(){
         </table>
     </div>
 </div>`
-    document.getElementById("homepage").innerHTML += text
+    document.getElementById("minAndMax").innerHTML += text
 }
 
 function drawOptionUser(id, dni, name, surname){

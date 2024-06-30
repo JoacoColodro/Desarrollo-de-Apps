@@ -18,13 +18,17 @@ class CreditCard {
         this.paymentInterest = paymentInterest
     }
 
-    payCreditCard(){
-        if (amount < this.balance * 0.1) {
+    payCreditCard(ammount){
+        if(!filterClientById(this.clientId).takeMoney(ammount, PESOS_SAVINGS_ACCOUNT)){
+            return -1
+        }
+        
+        if (ammount < this.balance * 0.1) {
             return -1; // Payment is less than the minimum payment required
         }
-
-        this.balance -= amount;
-
+        
+        this.balance -= ammount;
+        
         if (this.balance <= 0) {
             this.balance = 0;
             return 1; // Payment covers the total balance or more
