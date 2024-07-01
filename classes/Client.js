@@ -3,7 +3,25 @@ let clientId = 1
 const DOLLAR_SAVINGS_ACCOUNT = "dollar"
 const PESOS_SAVINGS_ACCOUNT = "pesos"
 
-const DOLLAR_PRICE = 1300
+async function getDollarPrice() {
+    try {
+        const response = await fetch("https://dolarapi.com/v1/dolares/blue");
+        const data = await response.json();
+        return data.venta;
+    } catch (error) {
+        console.error("Error fetching dollar price:", error);
+    }
+}
+
+// Llama a la función y asigna el valor a una variable
+async function setDollarPrice() {
+    const DOLLAR_PRICE = await getDollarPrice();
+    console.log("Dollar Price:", DOLLAR_PRICE);
+    // Aquí puedes usar DOLLAR_PRICE según sea necesario en tu aplicación
+}
+
+// Llama a la función para establecer el precio del dólar
+setDollarPrice();
 
 class Client {
     constructor(dni, password, name, surname, hasDolarSavingsAccount){
