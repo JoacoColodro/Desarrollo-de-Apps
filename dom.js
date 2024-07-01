@@ -160,19 +160,25 @@ function buyDollarsDom(){
 }
 
 function getSelectedCurrency() {
-    const selectedRadio = document.querySelector('input[name="radioMoneda"]:checked');
+    const selectedRadio = document.querySelector(`input[name="radioMoneda"]:checked`);
     if (selectedRadio) {
         return selectedRadio.value;
     }
     return null; // o puedes lanzar un error si es necesario
 }
 
-function newTransferenceDom(){
-    let beneficiaryClientId = document.getElementById("selectClienteDestino").value
-    let payerClientId = idActiveClient
-    let ammount = document.getElementById("montoTransferencia").value
+function newTransferenceDom() {
+    let beneficiaryClientId = document.getElementById("selectClienteDestino").value;
+    let payerClientId = idActiveClient;
+    let amount = parseFloat(document.getElementById("montoTransferencia").value); // Usar parseFloat para asegurarse de que amount es un número
     let selectedCurrency = getSelectedCurrency();
-    newTransference(beneficiaryClientId, payerClientId, ammount, selectedCurrency)
+    
+    if (!beneficiaryClientId || !payerClientId || isNaN(amount) || !selectedCurrency) {
+        console.error("Algunos campos no están correctamente definidos.");
+        return false; // Puedes manejar el error de una mejor forma si es necesario
+    }
+
+    return newTransference(beneficiaryClientId, payerClientId, amount, selectedCurrency);
 }
 
 function addNewConsumptionDom(){

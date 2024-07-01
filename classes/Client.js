@@ -49,15 +49,21 @@ class Client {
         
     }
 
-    sumBalance(){
-        if(this.dolarBalance != -1){
-            var dollarAmmountConverted = this.dolarBalance * DOLLAR_PRICE
-        }
-        else {
-            var dollarAmmountConverted = 0
+    sumBalance() {
+        let dollarAmmountConverted = 0;
+        
+        if (this.dolarBalance != -1) {
+            dollarAmmountConverted = this.dolarBalance * DOLLAR_PRICE;
         }
     
-        return this.balance + dollarAmmountConverted
+        // Ensure both values are numbers
+        let balance = parseFloat(this.balance) || 0;
+        dollarAmmountConverted = parseFloat(dollarAmmountConverted) || 0;
+        
+        let total = balance + dollarAmmountConverted;
+        console.log("total: ", total);
+    
+        return total;
     }
     
     takeMoney(ammount, type){
@@ -181,7 +187,9 @@ function filterClientWithMoreBalance(){
     let clientWithMoreBalance = 0
     
     for(let i = 0; i < clients.length; i++){
-        if (clients[i].sumBalance() > clients[clientWithMoreBalance].sumBalance()){
+        console.log("cliente i: ", clients[i].sumBalance())
+        console.log("cliente mayor: ", clients[clientWithMoreBalance].sumBalance())
+        if (clients[i].sumBalance() >= clients[clientWithMoreBalance].sumBalance()){
             clientWithMoreBalance = i
         }
     }
@@ -206,7 +214,7 @@ function hasSufficentBudget(client, type, amount) {
         return amount <= client.balance;
     }    
     else if (type == DOLLAR_SAVINGS_ACCOUNT && amount > 0) {
-        return amount <= client.dollarBalance;
+        return amount <= client.dolarBalance;
     }
     return false;
 }
@@ -214,7 +222,6 @@ function hasSufficentBudget(client, type, amount) {
 function newTransference(beneficiaryClientId, payerClientId, amount, type) {
     let payer = null;
     let beneficiary = null;
-    amount = new Number(amount)
 
     // Encuentra el pagador y el beneficiario
     for (let i = 0; i < clients.length; i++) {
@@ -227,11 +234,13 @@ function newTransference(beneficiaryClientId, payerClientId, amount, type) {
 
     // Verifica si el pagador y el beneficiario fueron encontrados
     if (!payer || !beneficiary) {
+        console.error("Pagador o beneficiario no encontrados.");
         return false;
     }
 
     // Verifica si el pagador tiene suficiente presupuesto
     if (!hasSufficentBudget(payer, type, amount)) {
+        console.error("El pagador no tiene suficiente presupuesto.");
         return false;
     }
 
@@ -240,10 +249,11 @@ function newTransference(beneficiaryClientId, payerClientId, amount, type) {
         payer.balance -= amount;
         beneficiary.balance += amount;
     } else if (type == DOLLAR_SAVINGS_ACCOUNT) {
-        payer.dollarBalance -= amount;
-        beneficiary.dollarBalance += amount;
+        payer.dolarBalance -= amount;
+        beneficiary.dolarBalance += amount;
     }
 
+    console.log("Transferencia realizada con éxito.");
     return true;
 }
 
