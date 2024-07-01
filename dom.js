@@ -202,7 +202,6 @@ function showClientsDom(){
                             <tbody id="tableBody">`;
     for (let i = 0; i < clients.length; i++){
         let client = clients[i]
-       
         tableRows += `
         <tr>
             <td>${client.dni}</td>
@@ -211,7 +210,6 @@ function showClientsDom(){
         </tr>
     `;
     }
-
     tableRows += `</tbody>`
     table.innerHTML = tableRows;
 }
@@ -248,7 +246,6 @@ function clientsCSV(){
     let csv = `${clients[0].dni},${clients[0].name},${clients[0].surname}`
     for (let i = 1; i < clients.length; i++){
         let client = clients[i]
-       
         csv += `
 ${client.dni},${client.name},${client.surname}`;
     }

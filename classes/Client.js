@@ -21,7 +21,7 @@ async function setDollarPrice() {
 }
 
 // Llama a la función para establecer el precio del dólar
-setDollarPrice();
+const DOLLAR_PRICE = setDollarPrice();
 
 class Client {
     constructor(dni, password, name, surname, hasDolarSavingsAccount){
