@@ -130,11 +130,6 @@ function sellDollarsDom(){
         return alert("Por favor ingrese todos los datos.");
     }
    
-    ammount = new Number(ammount);
-    if (!(ammount instanceof Number) || ammount <= 0) {
-        return alert("Por favor ingrese un monto válido.");
-    }
-   
     let filteredClient = filterClientById(idActiveClient);
     filteredClient.buyOrSellDollars(ammount, "pesos");
 
@@ -146,11 +141,6 @@ function buyDollarsDom(){
     
     if (!ammount) {
         return alert("Por favor ingrese todos los datos.");
-    }
-   
-    ammount = new Number(ammount);
-    if (!(ammount instanceof Number) || ammount <= 0) {
-        return alert("Por favor ingrese un monto válido.");
     }
    
     let filteredClient = filterClientById(idActiveClient);
@@ -298,13 +288,36 @@ function creditCardPaymentDom(){
         if (creditCard.cardId == selectedCreditCard){
             console.log(creditCard)
             let result = creditCard.payCreditCard(ammount)
-            document.getElementById("paymentResult").innerHTML = `<div class='alert'>${result}</div>`;
+            if (result == 0){
+                document.getElementById("paymentResult").innerHTML = `<div class='alert'>Pago realizado correctamente pero aun queda saldo pendiente</div>`;
+            } else if (result == 1){
+                document.getElementById("paymentResult").innerHTML = `<div class='alert'>Pago realizado correctamente y cubre todo el saldo</div>`;
+            }
+            else {
+                document.getElementById("paymentResult").innerHTML = `<div class='alert'>El pago no llega al monto minimo necesario</div>`;
+            }
         }
     }
 }
 
 function creditCardFullPaymentDom(){
-    
+    let clientCreditCards = filterCreditCardByClientId(idActiveClient)
+    let selectedCreditCard = document.getElementById("selectClientePagoTarjeta").value
+    for (let i = 0; i < clientCreditCards.length; i++){
+        let creditCard = clientCreditCards[i]
+        if (creditCard.cardId == selectedCreditCard){
+            console.log(creditCard)
+            let result = creditCard.payCreditCard(ammount)
+            if (result == 0){
+                document.getElementById("paymentResult").innerHTML = `<div class='alert'>Pago realizado correctamente pero aun queda saldo pendiente</div>`;
+            } else if (result == 1){
+                document.getElementById("paymentResult").innerHTML = `<div class='alert'>Pago realizado correctamente y cubre todo el saldo</div>`;
+            }
+            else {
+                document.getElementById("paymentResult").innerHTML = `<div class='alert'>El pago no llega al monto minimo necesario</div>`;
+            }
+        }
+    }
 }
 
 function clientWithMoreBalanceDom(){

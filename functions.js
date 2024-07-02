@@ -1,4 +1,4 @@
-let idActiveClient = 1
+let idActiveClient = 0
 let loggedUserId = 0
 
 function clientExists(dni, password) {
@@ -73,4 +73,5 @@ function logOut(){
     document.getElementById("dni").value = ""
     document.getElementById("password").value = ""
     changeScreen();
+    idActiveClient = 0;
 }

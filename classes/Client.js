@@ -3,6 +3,8 @@ let clientId = 1
 const DOLLAR_SAVINGS_ACCOUNT = "dollar"
 const PESOS_SAVINGS_ACCOUNT = "pesos"
 
+let DOLLAR_PRICE = 0
+
 async function getDollarPrice() {
     try {
         const response = await fetch("https://dolarapi.com/v1/dolares/blue");
@@ -15,14 +17,14 @@ async function getDollarPrice() {
 
 // Llama a la función y asigna el valor a una variable
 async function setDollarPrice() {
-    const DOLLAR_PRICE = await getDollarPrice();
+    DOLLAR_PRICE = Number(await getDollarPrice());
     console.log("Dollar Price:", DOLLAR_PRICE);
     // Aquí puedes usar DOLLAR_PRICE según sea necesario en tu aplicación
 }
 
-// Llama a la función para establecer el precio del dólar
-const DOLLAR_PRICE = setDollarPrice();
+setDollarPrice();
 
+// Llama a la función para establecer el precio del dólar
 class Client {
     constructor(dni, password, name, surname, hasDolarSavingsAccount){
         this.id = clientId
@@ -129,24 +131,24 @@ class Client {
 
 
     buyOrSellDollars(ammount, type){
+        let conversion = 1000;
+        let ammountConverted = ammount * DOLLAR_PRICE; //DOLLAR_PRICE
         if(type != DOLLAR_SAVINGS_ACCOUNT && type !== PESOS_SAVINGS_ACCOUNT){
             return false;
         }
         // Buy Dollars
         else if(type == DOLLAR_SAVINGS_ACCOUNT){
-            let ammountConverted = ammount * DOLLAR_PRICE
-            let takesmoney = this.takeMoney(ammountConverted, PESOS_SAVINGS_ACCOUNT);
-            if(takesmoney){
+            if(this.takeMoney(ammountConverted, PESOS_SAVINGS_ACCOUNT)){
                 this.depositMoney(ammount, DOLLAR_SAVINGS_ACCOUNT)
                 return true;
             }
         }
         // Sell Dollars      
         else if(type == PESOS_SAVINGS_ACCOUNT){
-            let ammountConverted = ammount * DOLLAR_PRICE
-            let takesmoney = this.takeMoney(ammount, DOLLAR_SAVINGS_ACCOUNT);
-            if(takesmoney){
-                this.depositMoney(ammountConverted, PESOS_SAVINGS_ACCOUNT)
+            
+            let prueba = this.takeMoney(ammount, DOLLAR_SAVINGS_ACCOUNT);
+            if(prueba){
+                console.log("test deposit",this.depositMoney(ammountConverted, PESOS_SAVINGS_ACCOUNT));
                 return true;
             }
             
@@ -249,8 +251,14 @@ function newTransference(beneficiaryClientId, payerClientId, amount, type) {
         payer.balance -= amount;
         beneficiary.balance += amount;
     } else if (type == DOLLAR_SAVINGS_ACCOUNT) {
-        payer.dolarBalance -= amount;
-        beneficiary.dolarBalance += amount;
+        if (beneficiary.dolarBalance != -1) {
+            payer.dolarBalance -= amount;
+            beneficiary.dolarBalance += amount;
+            return true;
+        } else { 
+            console.error("No tiene caja de dolares")
+            return false
+        }
     }
 
     console.log("Transferencia realizada con éxito.");
